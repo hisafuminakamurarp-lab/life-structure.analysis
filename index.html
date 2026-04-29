@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#fafaf7" />
+<meta name="description" content="一行の悩みから、あなたの人生構造を3分で分析。20代後半〜30代前半が、本気で“自分の現在地”を知るための無料診断。" />
+<meta property="og:title" content="その悩み、性格じゃなくて“構造”です。" />
+<meta property="og:description" content="一行の悩みから、あなたの人生構造を3分で分析する無料診断。" />
+<meta property="og:type" content="website" />
+<title>その悩み、性格じゃなくて“構造”です。 | 人生プロファイル無料診断</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* =====================================================
+   Reset & Base
+===================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --c-bg:#fafaf7;
+  --c-bg-alt:#f3f1ec;
+  --c-ink:#1a1a1a;
+  --c-ink-soft:#3a3a3a;
+  --c-ink-faded:#8a8a85;
+  --c-line:#d8d5cc;
+  --c-line-soft:#e8e5dd;
+  --c-accent:#b8412e;
+  --c-accent-soft:#c75a45;
+  --c-paper:#ffffff;
+  --font-display:"Cormorant Garamond","Shippori Mincho",serif;
+  --font-mincho:"Shippori Mincho","Noto Serif JP",serif;
+  --font-sans:"Noto Sans JP",system-ui,sans-serif;
+  --space-xs:0.5rem;
+  --space-sm:1rem;
+  --space-md:1.5rem;
+  --space-lg:2.5rem;
+  --space-xl:4rem;
+  --space-2xl:6rem;
+  --max-w:880px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-sans);
+  font-weight:400;font-size:16px;line-height:1.8;
+  color:var(--c-ink);background:var(--c-bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  letter-spacing:0.02em;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+em{font-style:normal}
+.sp-only{display:inline}
+@media (min-width:720px){.sp-only{display:none}}
+
+/* =====================================================
+   Nav
+===================================================== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,250,247,0.85);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--c-line-soft);
+}
+.nav__inner{
+  max-width:var(--max-w);margin:0 auto;
+  padding:0.875rem 1.25rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.nav__brand{
+  display:flex;align-items:center;gap:0.7rem;
+  font-family:var(--font-mincho);
+  position:relative;
+}
+.nav__brand::before{
+  content:"";display:block;
+  width:2px;height:18px;
+  background:var(--c-accent);
+  border-radius:1px;
+}
+.nav__brand-mark{
+  font-size:1rem;font-weight:600;
+  letter-spacing:0.12em;color:var(--c-ink);
+}
+.nav__brand-name{
+  font-family:var(--font-display);font-style:italic;
+  font-size:0.72rem;letter-spacing:0.18em;
+  color:var(--c-ink-faded);text-transform:uppercase;
+  padding-left:0.6rem;border-left:1px solid var(--c-line);
+}
+.nav__cta{
+  font-size:0.78rem;letter-spacing:0.08em;
+  padding:0.5rem 0.9rem;
+  border:1px solid var(--c-ink);border-radius:999px;
+  transition:all 0.3s var(--ease);
+}
+.nav__cta:hover{background:var(--c-ink);color:var(--c-bg)}
+
+/* =====================================================
+   FV
+===================================================== */
+.fv{
+  position:relative;min-height:100vh;min-height:100dvh;
+  display:flex;align-items:center;
+  padding:6rem 1.25rem 4rem;overflow:hidden;
+}
+.fv__bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.fv__grain{
+  position:absolute;inset:0;opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+.fv::before{
+  content:"";position:absolute;top:50%;right:-20%;
+  width:60%;aspect-ratio:1;
+  background:radial-gradient(circle,rgba(184,65,46,0.08),transparent 70%);
+  border-radius:50%;filter:blur(40px);z-index:0;
+}
+.fv__inner{position:relative;z-index:1;max-width:var(--max-w);margin:0 auto;width:100%}
+.fv__eyebrow{
+  display:flex;align-items:center;gap:0.6rem;
+  font-family:var(--font-display);font-style:italic;
+  font-size:0.85rem;color:var(--c-ink-faded);
+  letter-spacing:0.05em;margin-bottom:2rem;
+  opacity:0;animation:fadeUp 0.9s var(--ease) 0.1s forwards;
+}
+.dot{display:inline-block;width:6px;height:6px;background:var(--c-accent);border-radius:50%}
+.fv__title{
+  font-family:var(--font-mincho);font-weight:600;
+  font-size:clamp(2.4rem,9vw,4.2rem);line-height:1.25;
+  letter-spacing:0.01em;margin-bottom:2rem;
+}
+.fv__title-line{display:block;opacity:0;animation:fadeUp 0.9s var(--ease) forwards}
+.fv__title-line:nth-child(1){animation-delay:0.2s}
+.fv__title-line:nth-child(2){animation-delay:0.35s}
+.fv__title-line:nth-child(3){animation-delay:0.5s}
+.fv__title-line--accent em{color:var(--c-accent);font-style:normal;position:relative}
+.fv__title-line--accent em::after{
+  content:"";position:absolute;left:0;right:0;bottom:-0.15em;
+  height:8px;background:rgba(184,65,46,0.12);z-index:-1;
+}
+.fv__sub{
+  font-size:0.95rem;line-height:2;color:var(--c-ink-soft);
+  margin-bottom:2.5rem;max-width:28em;
+  opacity:0;animation:fadeUp 0.9s var(--ease) 0.7s forwards;
+}
+.fv__cta-wrap{opacity:0;animation:fadeUp 0.9s var(--ease) 0.85s forwards}
+.fv__cta-note{margin-top:0.85rem;font-size:0.75rem;color:var(--c-ink-faded);letter-spacing:0.08em}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* =====================================================
+   Buttons
+===================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:0.6rem;padding:1.1rem 2rem;
+  font-family:var(--font-sans);font-size:0.95rem;font-weight:500;
+  letter-spacing:0.08em;border-radius:999px;
+  transition:all 0.4s var(--ease);cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.btn--primary{background:var(--c-ink);color:var(--c-bg)}
+.btn--primary:hover{background:var(--c-accent);transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(184,65,46,0.4)}
+.btn--primary svg{transition:transform 0.4s var(--ease)}
+.btn--primary:hover svg{transform:translateX(4px)}
+.btn--full{width:100%}
+
+/* =====================================================
+   Section Common
+===================================================== */
+.sec{padding:var(--space-2xl) 1.25rem;position:relative}
+.sec--why{background:var(--c-paper);border-top:1px solid var(--c-line-soft);border-bottom:1px solid var(--c-line-soft)}
+.sec--what{background:var(--c-bg)}
+.sec--compare{background:var(--c-bg-alt);border-top:1px solid var(--c-line-soft);border-bottom:1px solid var(--c-line-soft)}
+.sec--faq{background:var(--c-paper)}
+.sec--diagnose{background:var(--c-ink);color:var(--c-bg);padding-top:5rem;padding-bottom:5rem}
+.sec__inner{max-width:var(--max-w);margin:0 auto}
+.sec__head{margin-bottom:2.5rem}
+.sec__num{
+  display:inline-block;font-family:var(--font-display);font-style:italic;
+  font-size:1rem;color:var(--c-accent);letter-spacing:0.1em;
+  margin-bottom:1rem;position:relative;padding-left:2.5rem;
+}
+.sec__num::before{content:"";position:absolute;left:0;top:50%;width:2rem;height:1px;background:var(--c-accent)}
+.sec__title{
+  font-family:var(--font-mincho);font-weight:600;
+  font-size:clamp(1.75rem,5.5vw,2.4rem);line-height:1.4;
+  letter-spacing:0.02em;
+}
+.sec__lead{font-size:0.95rem;line-height:2;color:var(--c-ink-soft);margin-bottom:3rem}
+
+/* =====================================================
+   Examples
+===================================================== */
+.examples{display:grid;gap:1.25rem}
+.example{
+  background:var(--c-bg);border:1px solid var(--c-line-soft);
+  padding:1.75rem 1.5rem;border-radius:4px;position:relative;
+  transition:transform 0.4s var(--ease),box-shadow 0.4s var(--ease);
+}
+.example:hover{transform:translateY(-3px);box-shadow:0 16px 32px -16px rgba(26,26,26,0.12)}
+.example__quote{
+  font-family:var(--font-mincho);font-size:1.05rem;line-height:1.7;
+  color:var(--c-ink);font-weight:500;
+  border-left:2px solid var(--c-accent);padding-left:1rem;margin-bottom:1rem;
+}
+.example__arrow{font-size:1.2rem;color:var(--c-ink-faded);margin:0.5rem 0 0.75rem 1rem;font-weight:300}
+.example__verdict{font-size:0.95rem;color:var(--c-ink-soft);padding-left:1rem;line-height:1.7}
+.example__verdict em{font-family:var(--font-mincho);font-weight:600;color:var(--c-accent)}
+
+/* =====================================================
+   Checklist
+===================================================== */
+.checklist{list-style:none;display:grid;gap:0.875rem;margin-bottom:3rem}
+.checklist li{display:flex;align-items:flex-start;gap:0.85rem;font-size:0.95rem;line-height:1.7;color:var(--c-ink-soft)}
+.checklist strong{font-weight:600;color:var(--c-ink)}
+.check{
+  flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;margin-top:4px;
+  background:var(--c-accent);color:var(--c-bg);border-radius:50%;
+  font-size:0.7rem;font-weight:600;
+}
+.types{
+  background:var(--c-paper);border:1px dashed var(--c-line);
+  padding:2rem 1.5rem;border-radius:4px;text-align:center;
+}
+.types__caption{
+  font-family:var(--font-display);font-style:italic;
+  font-size:0.85rem;color:var(--c-ink-faded);
+  letter-spacing:0.08em;margin-bottom:1.25rem;
+}
+.types__list{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 0.75rem}
+.types__list li{
+  font-family:var(--font-mincho);font-size:0.9rem;font-weight:500;
+  padding:0.4rem 0.9rem;background:var(--c-bg);
+  border:1px solid var(--c-line-soft);border-radius:999px;white-space:nowrap;
+}
+
+/* =====================================================
+   Compare
+===================================================== */
+.compare{display:grid;gap:1.5rem}
+.compare__col{
+  background:var(--c-paper);padding:2rem 1.5rem;
+  border-radius:4px;border:1px solid var(--c-line-soft);
+}
+.compare__col--paid{background:var(--c-ink);color:var(--c-bg);border-color:var(--c-ink);position:relative}
+.compare__col--paid::before{
+  content:"RECOMMEND";position:absolute;top:-10px;right:1.5rem;
+  background:var(--c-accent);color:var(--c-bg);
+  font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.15em;
+  padding:0.2rem 0.7rem;border-radius:2px;
+}
+.compare__label{
+  font-family:var(--font-display);font-style:italic;
+  font-size:0.85rem;letter-spacing:0.2em;
+  color:var(--c-ink-faded);margin-bottom:0.75rem;
+}
+.compare__col--paid .compare__label{color:var(--c-accent-soft)}
+.compare__head{
+  font-family:var(--font-mincho);font-size:1.15rem;font-weight:600;
+  line-height:1.5;margin-bottom:1.5rem;padding-bottom:1.25rem;
+  border-bottom:1px solid var(--c-line-soft);
+}
+.compare__col--paid .compare__head{border-bottom-color:rgba(255,255,255,0.15)}
+.compare__col ul{list-style:none;display:grid;gap:0.85rem;margin-bottom:1.75rem}
+.compare__col li{font-size:0.92rem;line-height:1.7;padding-left:1.2rem;position:relative;color:var(--c-ink-soft)}
+.compare__col--paid li{color:rgba(255,255,255,0.85)}
+.compare__col li::before{content:"";position:absolute;left:0;top:0.7em;width:8px;height:1px;background:var(--c-ink-faded)}
+.compare__col li em{font-family:var(--font-mincho);font-weight:600;color:var(--c-ink)}
+.compare__col--paid li em{color:var(--c-bg)}
+.compare__col li small{display:block;font-size:0.78rem;color:var(--c-ink-faded);margin-top:0.25rem;line-height:1.6}
+.compare__col--paid li small{color:rgba(255,255,255,0.5)}
+.compare__price{
+  font-family:var(--font-display);font-size:2.5rem;font-weight:500;
+  letter-spacing:0.02em;line-height:1;
+}
+.compare__price span{font-size:1.4rem;margin-right:0.2rem}
+.compare__price small{
+  font-family:var(--font-sans);font-size:0.75rem;font-weight:400;
+  margin-left:0.4rem;color:var(--c-ink-faded);
+}
+.compare__col--paid .compare__price small{color:rgba(255,255,255,0.5)}
+.compare__note{margin-top:0.75rem;font-size:0.78rem;color:var(--c-ink-faded);letter-spacing:0.05em}
+.compare__col--paid .compare__note{color:rgba(255,255,255,0.5)}
+
+/* =====================================================
+   FAQ
+===================================================== */
+.faq{display:grid;gap:0;border-top:1px solid var(--c-line-soft)}
+.faq__item{border-bottom:1px solid var(--c-line-soft)}
+.faq__item summary{
+  list-style:none;cursor:pointer;
+  padding:1.25rem 2.5rem 1.25rem 0;
+  font-family:var(--font-mincho);font-weight:500;
+  font-size:1rem;line-height:1.6;position:relative;
+  transition:color 0.3s var(--ease);
+}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item summary::after{
+  content:"+";position:absolute;right:0;top:50%;
+  transform:translateY(-50%);font-size:1.4rem;
+  color:var(--c-accent);font-weight:300;
+  transition:transform 0.3s var(--ease);
+}
+.faq__item[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq__item summary:hover{color:var(--c-accent)}
+.faq__item p{padding:0 0 1.5rem 0;font-size:0.92rem;line-height:1.9;color:var(--c-ink-soft)}
+
+/* =====================================================
+   Diagnose Form
+===================================================== */
+.diagnose{text-align:center}
+.diagnose__eyebrow{
+  font-family:var(--font-display);font-style:italic;
+  font-size:0.9rem;color:var(--c-accent-soft);
+  letter-spacing:0.15em;margin-bottom:1rem;
+}
+.diagnose__title{
+  font-family:var(--font-mincho);font-weight:500;
+  font-size:clamp(1.5rem,5vw,2rem);line-height:1.5;
+  margin-bottom:2.5rem;color:var(--c-bg);
+}
+.form{text-align:left;max-width:540px;margin:0 auto}
+.form__label{
+  display:block;font-size:0.9rem;line-height:1.7;
+  color:rgba(255,255,255,0.8);margin-bottom:0.85rem;
+  font-family:var(--font-mincho);
+}
+.form__input{
+  width:100%;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);border-radius:4px;
+  padding:1.1rem 1.25rem;
+  font-family:var(--font-sans);font-size:1rem;color:var(--c-bg);
+  line-height:1.7;resize:vertical;
+  transition:all 0.3s var(--ease);letter-spacing:0.02em;
+}
+.form__input::placeholder{color:rgba(255,255,255,0.35)}
+.form__input:focus{outline:none;border-color:var(--c-accent-soft);background:rgba(255,255,255,0.08)}
+.form__meta{display:flex;justify-content:flex-end;margin-top:0.5rem;margin-bottom:1.5rem}
+.form__count{
+  font-family:var(--font-display);font-size:0.78rem;
+  color:rgba(255,255,255,0.4);letter-spacing:0.05em;
+}
+.form .btn--primary{background:var(--c-accent);color:var(--c-bg)}
+.form .btn--primary:hover{background:var(--c-accent-soft);box-shadow:0 12px 24px -8px rgba(184,65,46,0.6)}
+.form__note{margin-top:1rem;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:0.05em}
+.form__success{
+  max-width:480px;margin:2rem auto 0;text-align:center;
+  padding:2.5rem 1.5rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:4px;
+  animation:fadeUp 0.6s var(--ease);
+}
+.form__success-icon{color:var(--c-accent-soft);margin-bottom:1.25rem;display:flex;justify-content:center}
+.form__success h3{font-family:var(--font-mincho);font-size:1.2rem;font-weight:600;margin-bottom:0.85rem;color:var(--c-bg)}
+.form__success p{font-size:0.9rem;line-height:1.8;color:rgba(255,255,255,0.7)}
+
+/* =====================================================
+   Footer
+===================================================== */
+.footer{
+  background:var(--c-ink);color:rgba(255,255,255,0.4);
+  padding:2.5rem 1.25rem;border-top:1px solid rgba(255,255,255,0.08);
+}
+.footer__inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;flex-direction:column;gap:0.75rem;
+  align-items:center;text-align:center;
+}
+.footer__brand{font-family:var(--font-mincho);font-size:0.95rem;letter-spacing:0.1em;color:rgba(255,255,255,0.7)}
+.footer__copy{font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.1em}
+
+/* =====================================================
+   Tablet & Up
+===================================================== */
+@media (min-width:720px){
+  body{font-size:16.5px}
+  .sec{padding:var(--space-2xl) 2rem}
+  .sec--diagnose{padding-top:6rem;padding-bottom:6rem}
+  .nav__inner{padding:1rem 2rem}
+  .examples{gap:1.5rem}
+  .compare{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .compare__col{padding:2.5rem 2rem}
+  /* 本文系の読み幅は少し絞る(diagnose と compare は広く) */
+  .sec--why .sec__inner,
+  .sec--what .sec__inner,
+  .sec--faq .sec__inner{max-width:680px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">
+      <span class="nav__brand-mark">人生プロファイル</span>
+      <span class="nav__brand-name">Life Profile</span>
+    </a>
+    <a href="#diagnose" class="nav__cta">無料で診断する</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- FV -->
+  <section class="fv">
+    <div class="fv__bg" aria-hidden="true">
+      <div class="fv__grain"></div>
+    </div>
+    <div class="fv__inner">
+      <p class="fv__eyebrow">
+        <span class="dot"></span>
+        A free life-structure analysis
+      </p>
+      <h1 class="fv__title">
+        <span class="fv__title-line">その悩み、</span>
+        <span class="fv__title-line">性格じゃなくて</span>
+        <span class="fv__title-line fv__title-line--accent">
+          <em>“構造”</em>です。
+        </span>
+      </h1>
+      <p class="fv__sub">
+        一行の悩みから、あなたの人生構造を3分で分析。<br />
+        20代後半〜30代前半が、本気で<br class="sp-only" />“自分の現在地”を知るための無料診断。
+      </p>
+      <div class="fv__cta-wrap">
+        <a href="#diagnose" class="btn btn--primary">
+          <span>一行で診断する</span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="fv__cta-note">所要時間 約3分 / 無料 / 登録不要</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section class="sec sec--why">
+    <div class="sec__inner">
+      <div class="sec__head">
+        <span class="sec__num">01</span>
+        <h2 class="sec__title">
+          なぜ、たった一行で<br />分かるのか。
+        </h2>
+      </div>
+      <p class="sec__lead">
+        人が口をついて出す「悩みの一行」には、<br class="sp-only" />
+        意思決定の癖、価値観の傾き、環境とのズレ──<br />
+        人生構造のすべてが凝縮されています。
+      </p>
+      <div class="examples">
+        <article class="example">
+          <p class="example__quote">「会社辞めたいけど、辞めた後が怖い」</p>
+          <div class="example__arrow" aria-hidden="true">↓</div>
+          <p class="example__verdict"><em>“選べない構造”</em>が見える</p>
+        </article>
+        <article class="example">
+          <p class="example__quote">「やりたいことあるのに、動けない」</p>
+          <div class="example__arrow" aria-hidden="true">↓</div>
+          <p class="example__verdict"><em>“失敗を許容できない意思決定”</em>が見える</p>
+        </article>
+        <article class="example">
+          <p class="example__quote">「人といると疲れるのに、孤独も嫌」</p>
+          <div class="example__arrow" aria-hidden="true">↓</div>
+          <p class="example__verdict"><em>“関係性の濃度設計ができていない構造”</em>が見える</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="sec sec--what">
+    <div class="sec__inner">
+      <div class="sec__head">
+        <span class="sec__num">02</span>
+        <h2 class="sec__title">
+          無料診断で、<br />分かること。
+        </h2>
+      </div>
+      <ul class="checklist">
+        <li><span class="check">✓</span>あなたの<strong>人生タイプ</strong>(命名)</li>
+        <li><span class="check">✓</span>悩みが起きている<strong>構造的な理由</strong></li>
+        <li><span class="check">✓</span><strong>本当の問題</strong>の再定義</li>
+        <li><span class="check">✓</span>向いている方向性(仕事・人間関係・お金)</li>
+      </ul>
+      <div class="types">
+        <p class="types__caption">— 人生タイプの一例 —</p>
+        <ul class="types__list">
+          <li>設計図先行タイプ</li>
+          <li>過剰受信タイプ</li>
+          <li>達成後の空洞タイプ</li>
+          <li>両利き欲求タイプ</li>
+          <li>借り物の物差しタイプ</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="sec sec--compare">
+    <div class="sec__inner">
+      <div class="sec__head">
+        <span class="sec__num">03</span>
+        <h2 class="sec__title">
+          無料版で「何者か」、<br />有料版で「どう動くか」。
+        </h2>
+      </div>
+      <div class="compare">
+        <div class="compare__col compare__col--free">
+          <p class="compare__label">FREE</p>
+          <p class="compare__head">あなたが何者かが、分かる。</p>
+          <ul>
+            <li>人生タイプの命名</li>
+            <li>悩みの構造分析</li>
+            <li>本当の問題の再定義</li>
+            <li>向いている方向性のヒント</li>
+          </ul>
+          <p class="compare__price"><span>¥</span>0</p>
+        </div>
+        <div class="compare__col compare__col--paid">
+          <p class="compare__label">PAID</p>
+          <p class="compare__head">明日から、どう動くかが分かる。</p>
+          <ul>
+            <li>あなたの<em>行動タイプ</em>診断<br /><small>実験型 / 段階移行型 / 濃度制御型 / 評価再設計型 / 意味再定義型</small></li>
+            <li>NG行動(やると悪化すること)</li>
+            <li>今日・1週間・1ヶ月・3ヶ月の行動設計</li>
+            <li>あなたの構造に合った意思決定基準</li>
+          </ul>
+          <p class="compare__price"><span>¥</span>1,980<small>(税込)</small></p>
+          <p class="compare__note">A4 約8ページ相当 / 30〜40分で読了</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec sec--faq">
+    <div class="sec__inner">
+      <div class="sec__head">
+        <span class="sec__num">04</span>
+        <h2 class="sec__title">よくある質問。</h2>
+      </div>
+      <div class="faq">
+        <details class="faq__item">
+          <summary>占いとは違うのですか?</summary>
+          <p>占いは“未来”を見ますが、これは“構造”を見ます。科学ではありませんが、占いでもありません。「自分が何にハマっているか」を言語化する、自己理解のツールです。</p>
+        </details>
+        <details class="faq__item">
+          <summary>当たらなかったら、どうなりますか?</summary>
+          <p>一行からの仮説分析なので、外す可能性は当然あります。ただし違和感も「自分はそれと違う」と分かる、貴重な自己理解の材料になります。</p>
+        </details>
+        <details class="faq__item">
+          <summary>個人情報は必要ですか?</summary>
+          <p>無料診断は、一行の悩みのみで利用できます。氏名・メールアドレスなどは不要です。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSE -->
+  <section class="sec sec--diagnose" id="diagnose">
+    <div class="sec__inner">
+      <div class="diagnose">
+        <p class="diagnose__eyebrow">— Start —</p>
+        <h2 class="diagnose__title">
+          まずは無料で、<br />あなたの構造を見てみませんか。
+        </h2>
+        <form class="form" id="diagnoseForm" novalidate>
+          <label for="worry" class="form__label">
+            今、人生で一番モヤモヤしていることを、<br class="sp-only" />一行で入力してください。
+          </label>
+          <textarea
+            id="worry"
+            name="worry"
+            class="form__input"
+            rows="3"
+            maxlength="200"
+            placeholder="例:やりたいことあるのに動けない"
+            required
+          ></textarea>
+          <div class="form__meta">
+            <span class="form__count"><span id="worryCount">0</span> / 200</span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">
+            <span>診断する</span>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <p class="form__note">送信後、診断レポートが表示されます(現在ベータ版)</p>
+        </form>
+        <div class="form__success" id="formSuccess" hidden>
+          <div class="form__success-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1"/>
+              <path d="M12 20l6 6 11-12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>診断内容を受け付けました。</h3>
+          <p>ご入力いただいた内容で、構造分析を準備しています。<br />しばらくお待ちください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__brand">人生プロファイル</p>
+    <p class="footer__copy">© <span id="year"></span> Life Profile. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // 年表示
+  var yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+
+  // 文字数カウント
+  var worryInput = document.getElementById('worry');
+  var worryCount = document.getElementById('worryCount');
+  if(worryInput && worryCount){
+    worryInput.addEventListener('input', function(){
+      worryCount.textContent = worryInput.value.length;
+    });
+  }
+
+  // フォーム送信
+  var form = document.getElementById('diagnoseForm');
+  var successBox = document.getElementById('formSuccess');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var worry = (worryInput.value || '').trim();
+      if(!worry){
+        worryInput.focus();
+        return;
+      }
+      // ▼▼▼ 後でここをAPI連携に差し替える ▼▼▼
+      // fetch('/api/diagnose', {
+      //   method:'POST',
+      //   headers:{'Content-Type':'application/json'},
+      //   body:JSON.stringify({worry:worry})
+      // }).then(res=>res.json()).then(data=>{ /* 結果表示 */ });
+      // ▲▲▲
+      handleSubmitSuccess(worry);
+    });
+  }
+
+  function handleSubmitSuccess(worry){
+    console.log('[diagnose submit]', {worry:worry, ts:new Date().toISOString()});
+    if(form && successBox){
+      form.hidden = true;
+      successBox.hidden = false;
+      window.requestAnimationFrame(function(){
+        successBox.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    }
+  }
+
+  // ナビCTA → フォーカス
+  var navCta = document.querySelector('.nav__cta');
+  if(navCta && worryInput){
+    navCta.addEventListener('click', function(){
+      setTimeout(function(){ worryInput.focus({preventScroll:true}); }, 600);
+    });
+  }
+  var fvCta = document.querySelector('.fv__cta-wrap .btn');
+  if(fvCta && worryInput){
+    fvCta.addEventListener('click', function(){
+      setTimeout(function(){ worryInput.focus({preventScroll:true}); }, 600);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
